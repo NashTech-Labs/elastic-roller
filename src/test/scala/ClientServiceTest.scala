@@ -1,9 +1,6 @@
 import com.knoldus.{ClientService, ClientServiceApi}
 import org.scalatest.FunSuite
 
-/**
-  * Created by kunal on 18/3/16.
-  */
 class ClientServiceTest extends FunSuite with ClientServiceApi{
 
   val clientService = new ClientService
