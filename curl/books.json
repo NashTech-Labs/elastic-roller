@@ -1,0 +1,9 @@
+{ "index" : {"_index":"library","_type":"books", "_id":"3"}}\n
+{ "title" : "Java EE","price":"1000","author":{"first":"Chris","last":"Adamson"} }
+{ "index" : {"_index":"library","_type":"books", "_id":"4"}}\n
+{ "title" : "Apache Kafka Cookbook","price":"2000","author":{"first":"Saurabh","last":"Minni"} }
+{ "index" : {"_index":"library","_type":"books", "_id":"5"}}\n
+{ "title" : "Learning Spark","price":"2000","author":{"first":"Andy","last":"Konwinski"} }
+{ "index" : {"_index":"library","_type":"books", "_id":"6"}}\n
+{ "title" : "Scala","price":"3000","author":{"first":"Martin","last":"Ordersky"} }
+

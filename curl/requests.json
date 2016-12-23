@@ -1,0 +1,4 @@
+{"index" : "library"}
+{"query":{"term":{"title":"elasticsearch"}}}
+{"index" : "library"}
+{"query":{"term":{"title":"scala"}}} 

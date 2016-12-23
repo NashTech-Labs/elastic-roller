@@ -1,0 +1,96 @@
+******* Index a document ***********
+1. curl -XPUT 'localhost:9200/library/books/1?pretty' -d '{"title": "Elastic","price": 1000,"author":{"first": "Zachary","last": "Tong"}}'
+
+2. curl -XPUT 'localhost:9200/library/books/2?pretty' -d '{"title": "Java","price": 1500,"author":{"first": "Chris","last": "Adamson"}}'
+
+******* Updating a document ********
+
+3. curl -XPUT 'localhost:9200/library/books/1?pretty' -d '{"title": "Elasticsearch","price": 1000,"author":{"first": "Zachary","last": "Tong"}}'
+
+******* Index using Bulk Api *******
+
+4. curl -XPOST 'localhost:9200/_bulk' --data-binary @books.json
+
+******* Deleting a document ********
+
+5. curl -XDELETE 'localhost:9200/library/books/2?pretty'
+
+******* URI Search *****************
+
+6. curl -XGET 'localhost:9200/library/books/_search?q=title:scala'
+
+******* Request Body Search ********
+
+7. curl -XPOST 'localhost:9200/library/books/_search?pretty' -d '{"query":{"term":{"title":"Elasticsearch"}}}'
+
+******* Multi Search ***************
+
+8. curl -XGET 'localhost:9200/_msearch' --data-binary @requests.json
+
+******* Count Api *****************
+
+9. curl -XGET 'localhost:9200/library/books/_count?q=price:1000'
+
+******* Match All Query *****************
+
+10. curl -XGET 'localhost:9200/library/books/_search' -d '{"query":{"match_all":{}}}'
+
+******* Match Query ***************
+
+11. curl -XGET 'localhost:9200/library/books/_search' -d '{"query":{"match":{"title":"java"}}}'
+
+******* Term Query ***************
+12. curl -XPOST 'localhost:9200/library/books/_search?pretty' -d '{"query":{"term":{"title":"spark"}}}'
+
+******* Terms Query ***************
+13. curl -XPOST 'localhost:9200/library/books/_search?pretty' -d '{"query":{"terms":{"price":[1000, 2000]}}}'
+
+******* Range Query ***************
+
+14. curl -XPOST 'localhost:9200/library/books/_search?pretty' -d '{"query": {"range" : {"price" : {"gte" : 1000,"lte" : 2000,}}}}'
+
+******** Bool Query *********
+15. curl -XPOST 'localhost:9200/test/test/_search' -d '{"query":{"bool":{"must":{"term": {"price": 2000}},"should": [{"term": {"title": "spark"}},{"term": {"title": "kafka"}}]}}}'
+
+******** Mapping *******
+
+16. (curl -XPUT 'localhost:9200/test' -d '{
+    "settings":{
+      "number_of_shards" : 1  
+    },
+    "mappings":{
+    "books": {
+    "properties": {
+      "author": {
+        "properties": {
+          "last": {
+            "type": "string"
+          },
+          "first": {
+            "type": "string"
+          }
+        }
+      },
+      "price": {
+        "type": "long"
+      },
+      "title": {
+        "type": "string"
+      }
+    }
+  }
+    }
+}')
+
+******** Analyze APi ******
+17. curl -XGET 'localhost:9200/library/_analyze?pretty' -d '{"analyzer": "standard", "text":"hello world"}'
+
+try with other analyzers as well
+
+
+
+
+
+
+
+
